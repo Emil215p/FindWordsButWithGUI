@@ -52,8 +52,8 @@ namespace FindWordsButWithGUI
                 return;
             }
             OutputBox.Text = String.Empty;
-            ReadSearch.Length = 5;
-            ReadSearch.AmountOfWords = 5;
+            ReadSearch.Length = a;
+            ReadSearch.AmountOfWords = b;
             ReadSearch.Clear();
             ReadSearch.ReadFile(filepath);
 
