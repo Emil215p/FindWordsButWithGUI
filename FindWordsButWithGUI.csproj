@@ -7,4 +7,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="UniqueLengthAmountWords">
+      <HintPath>..\..\..\Downloads\UniqueLengthAmountWords.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -18,12 +18,16 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Content="How many letters to check for?" Margin="110,59,400,334" FontSize="20
+        <Label Content="How many letters to check for?" Margin="110,59,400,305" FontSize="20
                "/>
-        <TextBox Name="LetterAmount" HorizontalAlignment="Left" Margin="110,153,0,0" TextWrapping="Wrap" Text="Input letter amount" VerticalAlignment="Top" Width="186" Height="64" TextChanged="TextBox_TextChanged"/>
-        <Label Content="How many words?" Margin="400,59,110,334" FontSize="20                "/>
+        <TextBox Name="LetterAmount" HorizontalAlignment="Left" Margin="110,153,0,0" TextWrapping="Wrap" Text="Input letter amount" VerticalAlignment="Top" Width="186" Height="64"/>
+        <Label Content="How many words?" Margin="400,59,110,305" FontSize="20                "/>
         <TextBox Name="WordAmount" HorizontalAlignment="Left" Margin="400,153,0,0" TextWrapping="Wrap" Text="Input word amount" VerticalAlignment="Top" Width="186" Height="64"/>
-        <TextBox Name="OutputBox" HorizontalAlignment="Left" Margin="274,244,0,0" TextWrapping="Wrap" Text="Output" VerticalAlignment="Top" Width="186" Height="64"/>
+        <TextBox Name="OutputBox" HorizontalAlignment="Left" Margin="255,244,0,0" TextWrapping="Wrap" Text="Output" VerticalAlignment="Top" Width="238" Height="64"/>
 
+        <StackPanel Orientation="Horizontal">
+            <Button Name="BtnBrowse" Width="50" Height="50" Content="Browse" Command="{Binding CommandInViewModel}" Click="BtnBrowse_Click"/>
+            <TextBox Width="50" Height="50"/>
+        </StackPanel>
     </Grid>
 </Window>
