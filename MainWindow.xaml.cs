@@ -45,9 +45,16 @@ namespace FindWordsButWithGUI
             });
         }
 
-
+        bool running = false;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (running)
+            {
+                MessageBox.Show("I am busy");
+                return;
+            }
+
+            running = true;
 
             if (filepath == null)
             {
@@ -87,14 +94,16 @@ namespace FindWordsButWithGUI
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     ReadSearch.result.ForEach(x => OutputBox.Text += "\n" + x);
+                    ResultBox.Text = ReadSearch.result.Count.ToString();
                 });
-                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
-            }  
+            }
+
+            running = false;
+
         }
         string filepath;
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)

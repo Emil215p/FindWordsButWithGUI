@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FindWordsButWithGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Unique Word Combinations" Height="450" Width="800">
     <Grid>
         <Button Name="CalculateOutput" Content="Click here to calculate" HorizontalAlignment="Left" Margin="239,334,0,0" VerticalAlignment="Top" FontSize="20
                 "  Height="76" Width="260" RenderTransformOrigin="0.5,0.5" Click="Button_Click">
@@ -20,14 +20,16 @@
         </Button>
         <Label Content="How many letters in word?" Margin="15,10,495,354" FontSize="20
                "/>
-        <TextBox Name="LetterAmount" HorizontalAlignment="Left" Margin="24,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="45"/>
+        <TextBox Name="LetterAmount" HorizontalAlignment="Left" Margin="24,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56"/>
         <Label Content="How many words?" Margin="24,126,486,238" FontSize="20                "/>
-        <TextBox Name="WordAmount" HorizontalAlignment="Left" Margin="24,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="54"/>
+        <TextBox Name="WordAmount" HorizontalAlignment="Left" Margin="24,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56"/>
         <TextBox Name="OutputBox" HorizontalAlignment="Left" Margin="513,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Height="385" IsReadOnly="True" MaxLines="2147483646" RenderTransformOrigin="0.457,1.092"/>
 
-        <StackPanel Orientation="Horizontal" Margin="24,260,640,45">
-            <Button x:Name="BtnBrowse" Width="100" Height="100" FontSize="18" Content="Choose file" Command="{Binding CommandInViewModel}" Click="BtnBrowse_Click"/>
+        <StackPanel Orientation="Horizontal" Margin="33,315,631,10">
+            <Button x:Name="BtnBrowse" Width="100" Height="76" FontSize="18" Content="Choose file" Command="{Binding CommandInViewModel}" Click="BtnBrowse_Click"/>
         </StackPanel>
         <ProgressBar x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="243,315,0,0" VerticalAlignment="Top" Width="255"/>
+        <TextBox TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="252,175,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="246" Height="112" IsReadOnly="True"/>
+        <Label Content="Amount of eligible combinations:" FontSize="15" VerticalContentAlignment="Top"  FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="252,146,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
