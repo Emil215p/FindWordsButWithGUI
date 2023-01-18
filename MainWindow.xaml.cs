@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace FindWordsButWithGUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// Whats your opinion on lasagna? whoever reads this.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -31,7 +33,11 @@ namespace FindWordsButWithGUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-
+            if (filepath == null)
+            {
+                MessageBox.Show("I need a file.");
+                return;
+            }
 
 
 
@@ -43,23 +49,36 @@ namespace FindWordsButWithGUI
             } catch(Exception ex)
             {
                 MessageBox.Show("Invalid numbers.");
+                return;
             }
-
+            OutputBox.Text = String.Empty;
             ReadSearch.Length = 5;
             ReadSearch.AmountOfWords = 5;
             ReadSearch.Clear();
             ReadSearch.ReadFile(filepath);
 
+            Thread t = new Thread(new ThreadStart(Search));
+
+            t.Start();
+        }
+
+
+        private void Search()
+        {
             try
             {
                 ReadSearch.SearchClever();
-            } catch (Exception ex)
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    ReadSearch.result.ForEach(x => OutputBox.Text += "\n" + x);
+                });
+                
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            
-
-
+                return;
+            }  
         }
         string filepath;
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
