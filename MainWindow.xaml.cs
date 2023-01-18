@@ -32,8 +32,19 @@ namespace FindWordsButWithGUI
         public MainWindow()
         {
             InitializeComponent();
+            ReadSearch.progress = Update;
 
         }
+
+        private void Update(int a, int b)
+        {
+            double value = (double)((double)((double)a / (double)b) * 100);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                BarProgress.Value = value;
+            });
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

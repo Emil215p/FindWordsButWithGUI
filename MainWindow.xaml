@@ -28,5 +28,6 @@
         <StackPanel Orientation="Horizontal" Margin="24,260,640,45">
             <Button x:Name="BtnBrowse" Width="100" Height="100" FontSize="18" Content="Choose file" Command="{Binding CommandInViewModel}" Click="BtnBrowse_Click"/>
         </StackPanel>
+        <ProgressBar x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="243,315,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>
 </Window>
