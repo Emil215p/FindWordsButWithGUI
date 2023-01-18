@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -53,16 +55,11 @@ namespace FindWordsButWithGUI
                 MessageBox.Show("I am busy");
                 return;
             }
-
-            running = true;
-
             if (filepath == null)
             {
                 MessageBox.Show("I need a file.");
                 return;
             }
-
-
 
             int a, b;
             try
@@ -74,6 +71,9 @@ namespace FindWordsButWithGUI
                 MessageBox.Show("Invalid numbers.");
                 return;
             }
+
+            running = true;
+
             OutputBox.Text = String.Empty;
             ReadSearch.Length = a;
             ReadSearch.AmountOfWords = b;
@@ -113,6 +113,38 @@ namespace FindWordsButWithGUI
             if (response == true)
             {
                 filepath = ofd.FileName;
+                FileSelectBox.Text = ofd.FileName.Substring(ofd.FileName.LastIndexOf("\\") + 1);
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = @"Output.txt";
+            bool? response = sfd.ShowDialog();
+            if (response == true)
+            {
+                filepath = sfd.FileName;
+                Save(sfd.FileName);
+            }
+        }
+
+        private void Save(string path)
+        {
+            try
+            {
+
+                TextWriter tw = new StreamWriter(path);
+                    
+                foreach (String s in ReadSearch.result)
+                {
+                    tw.WriteLine(s);
+                }
+            
+                tw.Close();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
