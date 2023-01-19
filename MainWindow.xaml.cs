@@ -65,6 +65,7 @@ namespace FindWordsButWithGUI
         int amount = 0;
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            OutputBox.Text = "Validating FilePath...";
             if (running)
             {
                 MessageBox.Show("I am busy");
@@ -76,6 +77,8 @@ namespace FindWordsButWithGUI
                 return;
             }
 
+            OutputBox.Text += "\nValidating Input Numbers";
+
             int wordsLength, wordNumber;
             try
             {
@@ -86,6 +89,8 @@ namespace FindWordsButWithGUI
                 MessageBox.Show("Invalid numbers.");
                 return;
             }
+
+            OutputBox.Text += "\nReading File...";
 
             CalculateOutput.IsEnabled = false;
             running = true;
@@ -99,6 +104,9 @@ namespace FindWordsButWithGUI
 
             //t.Name = "ReadSeachManager";
             //t.Start();
+
+
+            OutputBox.Text += "\nFinding Combinations";
             Search();
         }
 
@@ -166,7 +174,7 @@ namespace FindWordsButWithGUI
 
                 TextWriter tw = new StreamWriter(path);
                     
-                foreach (String s in ReadSearch.result)
+                foreach (String s in ReadSearch.result.ToList().Distinct().ToList())
                 {
                     tw.WriteLine(s);
                 }
