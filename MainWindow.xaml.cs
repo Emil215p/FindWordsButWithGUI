@@ -61,11 +61,11 @@ namespace FindWordsButWithGUI
                 return;
             }
 
-            int a, b;
+            int wordsLength, wordNumber;
             try
             {
-                a = Convert.ToInt32(LetterAmount.Text);
-                b = Convert.ToInt32(WordAmount.Text);
+                wordsLength = Convert.ToInt32(LetterAmount.Text);
+                wordNumber = Convert.ToInt32(WordAmount.Text);
             } catch(Exception ex)
             {
                 MessageBox.Show("Invalid numbers.");
@@ -75,8 +75,8 @@ namespace FindWordsButWithGUI
             running = true;
 
             OutputBox.Text = String.Empty;
-            ReadSearch.Length = a;
-            ReadSearch.AmountOfWords = b;
+            ReadSearch.Length = wordsLength;
+            ReadSearch.AmountOfWords = wordNumber;
             ReadSearch.Clear();
             ReadSearch.ReadFile(filepath);
 
