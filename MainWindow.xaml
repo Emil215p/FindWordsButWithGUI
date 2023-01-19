@@ -39,9 +39,21 @@
 
         </Button>
         <Label Grid.Column="1" Content="Letters in words:" Margin="24,65,571,286" FontSize="15"/>
-        <TextBox Grid.Column="1" Name="LetterAmount" HorizontalAlignment="Left" Margin="24,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56"/>
+        <TextBox Grid.Column="1" Name="LetterAmount" HorizontalAlignment="Left" Margin="24,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label Grid.Column="1" Content="How many words:" Margin="17,155,571,209" FontSize="15"/>
-        <TextBox Grid.Column="1" Name="WordAmount" HorizontalAlignment="Left" Margin="24,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="118" Height="56" RenderTransformOrigin="0.493,0.27"/>
+        <TextBox Grid.Column="1" Name="WordAmount" HorizontalAlignment="Left" Margin="24,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="118" Height="56" RenderTransformOrigin="0.493,0.27">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
 
         <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="BtnBrowse" FontSize="18" Content="Choose file" Click="BtnBrowse_Click" Margin="24,330,0,0" Height="76" Width="118"            >
             <Button.Resources>
@@ -52,12 +64,36 @@
 
         </Button>
 
-        <ProgressBar Grid.Column="1" x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="207,315,0,0" VerticalAlignment="Top" Width="260"/>
-        <TextBox Grid.Column="1" TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="207,113,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="259" Height="112" IsReadOnly="True"/>
+        <ProgressBar Grid.Column="1" x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="207,315,0,0" VerticalAlignment="Top" Width="260">
+            <ProgressBar.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </ProgressBar.Resources>
+            </ProgressBar>
+            <TextBox Grid.Column="1" TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="207,113,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="259" Height="112" IsReadOnly="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Label Grid.Column="1" Content="Amount of eligible combinations:" FontSize="15" VerticalContentAlignment="Top"  FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="214,77,0,0" VerticalAlignment="Top" Width="246"/>
         <Label Grid.Column="1" x:Name="LblFileSelect" FontSize="15" HorizontalContentAlignment="Left" Content="File" HorizontalAlignment="Left" Margin="24,277,0,0" VerticalAlignment="Top" Width="86" Height="36"/>
-        <TextBox Grid.Column="1" x:Name="FileSelectBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="24,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Height="23" IsReadOnly="True"/>
-        <TextBox Grid.Column="1" Opacity="10" Name="OutputBox" HorizontalAlignment="Left" Margin="490,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Height="385" IsReadOnly="True" MaxLines="2147483646"/>
+        <TextBox Grid.Column="1" x:Name="FileSelectBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="24,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Height="23" IsReadOnly="True">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox Grid.Column="1" Opacity="10" Name="OutputBox" HorizontalAlignment="Left" Margin="490,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Height="385" IsReadOnly="True" MaxLines="2147483646">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
 
 
 
