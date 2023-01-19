@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:FindWordsButWithGUI"
             mc:Ignorable="d"
-            Title="Unique Word Combinations" Height="450" Width="800">
+            Title="Unique Word Combinations" Height="450" Width="800" ResizeMode="NoResize" >
     <Grid Background="#1111">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
@@ -38,7 +38,7 @@
             </Button.Resources>
 
         </Button>
-        <Label Grid.Column="1" Content="Letters in words:" Margin="17,65,578,286" FontSize="15"/>
+        <Label Grid.Column="1" Content="Letters in words:" Margin="17,65,571,286" FontSize="15"/>
         <TextBox Grid.Column="1" Name="LetterAmount" HorizontalAlignment="Left" Margin="24,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -46,7 +46,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Grid.Column="1" Content="How many words:" Margin="17,155,571,209" FontSize="15"/>
+        <Label Grid.Column="1" Content="How many words:" Margin="17,155,553,209" FontSize="15"/>
         <TextBox Grid.Column="1" Name="WordAmount" HorizontalAlignment="Left" Margin="24,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="118" Height="56" RenderTransformOrigin="0.493,0.27">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -79,7 +79,7 @@
             </TextBox.Resources>
         </TextBox>
         <Label Grid.Column="1" Content="Amount of eligible combinations:" FontSize="15" VerticalContentAlignment="Top"  FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="207,82,0,0" VerticalAlignment="Top" Width="246"/>
-        <Label Grid.Column="1" x:Name="LblFileSelect" FontSize="15" HorizontalContentAlignment="Left" Content="File" HorizontalAlignment="Left" Margin="24,277,0,0" VerticalAlignment="Top" Width="86" Height="36"/>
+        <Label Grid.Column="1" x:Name="LblFileSelect" FontSize="15" HorizontalContentAlignment="Left" Content="File:" HorizontalAlignment="Left" Margin="24,277,0,0" VerticalAlignment="Top" Width="86" Height="36"/>
         <TextBox Grid.Column="1" x:Name="FileSelectBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="24,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Height="23" IsReadOnly="True">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
