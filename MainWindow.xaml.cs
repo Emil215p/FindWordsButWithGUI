@@ -89,7 +89,6 @@ namespace FindWordsButWithGUI
 
             running = true;
 
-            OutputBox.Text = String.Empty;
             ReadSearch.Length = wordsLength;
             ReadSearch.AmountOfWords = wordNumber;
             ReadSearch.Clear();
