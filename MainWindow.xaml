@@ -13,16 +13,44 @@
         </Grid.ColumnDefinitions>
         <Frame x:Name="navFrame" NavigationUIVisibility="Hidden" Background="#e9ecFf" Grid.Column="1"/>
 
-        <Button Grid.Column="0" x:Name="btnSave" FontSize="16" HorizontalContentAlignment="Center" Content="Save" HorizontalAlignment="Left" Margin="15,350,0,0" VerticalAlignment="Top" Click="btnSave_Click" Height="50" Width="50"/>
-        <Button Grid.Column="0" x:Name="btnDisplayResult" FontSize="12" HorizontalContentAlignment="Center" Content="Display" HorizontalAlignment="Left" Margin="15,20,0,0" VerticalAlignment="Top" Click="btnDisplay_Click" Height="30" Width="50"/>
+        <Button Grid.Column="0" x:Name="btnSave" FontSize="16" HorizontalContentAlignment="Center" Content="Save" HorizontalAlignment="Left" Margin="15,350,0,0" VerticalAlignment="Top" Click="btnSave_Click" Height="50" Width="50">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
 
-        <Button Grid.Column="1" Name="CalculateOutput" Content="Click here to calculate" HorizontalAlignment="Left" Margin="207,330,0,0" VerticalAlignment="Top" FontSize="20"  Height="76" Width="260" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
-        <Label Grid.Column="1" Content="Letters in words:" Margin="24,65,578,286" FontSize="15"/>
+        </Button>
+        <Button Grid.Column="0" x:Name="btnDisplayResult" FontSize="12" HorizontalContentAlignment="Center" Content="Display" HorizontalAlignment="Left" Margin="15,20,0,0" VerticalAlignment="Top" Click="btnDisplay_Click" Height="30" Width="50">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                </Style>
+            </Button.Resources>
+
+        </Button>
+
+        <Button Grid.Column="1" Name="CalculateOutput" Content="Click here to calculate" HorizontalAlignment="Left" Margin="207,330,0,0" VerticalAlignment="Top" FontSize="20"  Height="76" Width="260" RenderTransformOrigin="0.5,0.5" Click="Button_Click"            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="20"></Setter>
+            </Style>
+            </Button.Resources>
+
+        </Button>
+        <Label Grid.Column="1" Content="Letters in words:" Margin="24,65,571,286" FontSize="15"/>
         <TextBox Grid.Column="1" Name="LetterAmount" HorizontalAlignment="Left" Margin="24,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="56"/>
         <Label Grid.Column="1" Content="How many words:" Margin="17,155,571,209" FontSize="15"/>
         <TextBox Grid.Column="1" Name="WordAmount" HorizontalAlignment="Left" Margin="24,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="118" Height="56" RenderTransformOrigin="0.493,0.27"/>
 
-        <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="BtnBrowse" FontSize="18" Content="Choose file" Click="BtnBrowse_Click" Margin="24,330,0,0" Height="76" Width="118"/>
+        <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="BtnBrowse" FontSize="18" Content="Choose file" Click="BtnBrowse_Click" Margin="24,330,0,0" Height="76" Width="118"            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="20"></Setter>
+            </Style>
+            </Button.Resources>
+
+        </Button>
 
         <ProgressBar Grid.Column="1" x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="207,315,0,0" VerticalAlignment="Top" Width="260"/>
         <TextBox Grid.Column="1" TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="207,113,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="259" Height="112" IsReadOnly="True"/>
