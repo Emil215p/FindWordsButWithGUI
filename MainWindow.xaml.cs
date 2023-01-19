@@ -63,7 +63,7 @@ namespace FindWordsButWithGUI
 
         bool running = false;
         int amount = 0;
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (running)
             {
@@ -87,6 +87,7 @@ namespace FindWordsButWithGUI
                 return;
             }
 
+            CalculateOutput.IsEnabled = false;
             running = true;
 
             ReadSearch.Length = wordsLength;
@@ -94,10 +95,11 @@ namespace FindWordsButWithGUI
             ReadSearch.Clear();
             ReadSearch.ReadFile(filepath);
 
-            Thread t = new Thread(new ThreadStart(Search));
+            //Thread t = new Thread(new ThreadStart(Search));
 
-            t.Name = "ReadSeachManager";
-            t.Start();
+            //t.Name = "ReadSeachManager";
+            //t.Start();
+            Search();
         }
 
 
@@ -118,8 +120,11 @@ namespace FindWordsButWithGUI
             Application.Current.Dispatcher.Invoke(() =>
             {
                 BarProgress.Value = 0;
+                CalculateOutput.IsEnabled = true;
+                ResultBox.Text = ReadSearch.result.Distinct().ToList().Count.ToString();
             });
-           
+            
+
         }
         string filepath;
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
@@ -145,6 +150,15 @@ namespace FindWordsButWithGUI
             }
         }
 
+        private void btnDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                OutputBox.Text = string.Empty;
+                ReadSearch.result.ToList().Distinct().ToList().ForEach(x => OutputBox.Text += "\n" + x);
+            });
+        }
+
         private void Save(string path)
         {
             try
@@ -158,6 +172,7 @@ namespace FindWordsButWithGUI
                 }
             
                 tw.Close();
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
