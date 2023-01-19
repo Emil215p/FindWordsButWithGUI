@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 using UniqueLengthAmountWords;
 
 namespace FindWordsButWithGUI
@@ -35,19 +36,33 @@ namespace FindWordsButWithGUI
         {
             InitializeComponent();
             ReadSearch.progress = Update;
+            ReadSearch.combinationFound += Combination;
 
         }
 
-        private void Update(int a, int b)
+        private async void Update(int a, int b)
         {
-            double value = (double)((double)((double)a / (double)b) * 100);
-            Application.Current.Dispatcher.Invoke(() =>
+            Thread.Sleep(10);
+            await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                BarProgress.Value = value;
+                BarProgress.Value = (double)((double)((double)a / (double)b) * 100);
+            });
+        }
+
+        private async void Combination(string str)
+        {
+
+            Thread.Sleep(10);
+
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                //OutputBox.Text += ("\n" + str);
+                ResultBox.Text = (++amount).ToString();
             });
         }
 
         bool running = false;
+        int amount = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (running)
@@ -82,20 +97,16 @@ namespace FindWordsButWithGUI
 
             Thread t = new Thread(new ThreadStart(Search));
 
+            t.Name = "ReadSeachManager";
             t.Start();
         }
 
 
-        private void Search()
+        private async void Search()
         {
             try
             {
-                ReadSearch.SearchClever();
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ReadSearch.result.ForEach(x => OutputBox.Text += "\n" + x);
-                    ResultBox.Text = ReadSearch.result.Count.ToString();
-                });
+                await Task.Run(ReadSearch.SearchClever);
             }
             catch (Exception ex)
             {
@@ -103,7 +114,13 @@ namespace FindWordsButWithGUI
             }
 
             running = false;
+            amount = 0;
 
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                BarProgress.Value = 0;
+            });
+           
         }
         string filepath;
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
