@@ -11,7 +11,7 @@
             <ColumnDefinition Width="80"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Frame x:Name="navFrame" NavigationUIVisibility="Hidden" Background="#e9ecFf" Grid.Column="1"/>
+        <Frame x:Name="navFrame" NavigationUIVisibility="Hidden" Background="#e9ecFf" Grid.Column="1" Margin="0,0,0,-1"/>
 
         <Button Grid.Column="0" x:Name="btnSave" FontSize="16" HorizontalContentAlignment="Center" Content="Save" HorizontalAlignment="Left" Margin="15,350,0,0" VerticalAlignment="Top" Click="btnSave_Click" Height="50" Width="50">
             <Button.Resources>
@@ -24,13 +24,13 @@
         <Button Grid.Column="0" x:Name="btnDisplayResult" FontSize="12" HorizontalContentAlignment="Center" Content="Display" HorizontalAlignment="Left" Margin="15,20,0,0" VerticalAlignment="Top" Click="btnDisplay_Click" Height="30" Width="50">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"></Setter>
+                    <Setter Property="CornerRadius" Value="15"></Setter>
                 </Style>
             </Button.Resources>
 
         </Button>
 
-        <Button Grid.Column="1" Name="CalculateOutput" Content="Calculate" HorizontalAlignment="Left" Margin="207,330,0,0" VerticalAlignment="Top" FontSize="20"  Height="76" Width="260" RenderTransformOrigin="0.5,0.5" Click="Button_Click"            >
+        <Button Grid.Column="1" Name="CalculateOutput" Content="Calculate" HorizontalAlignment="Left" Margin="183,329,0,0" VerticalAlignment="Top" FontSize="20"  Height="76" Width="260" RenderTransformOrigin="0.5,0.5" Click="Button_Click"            >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"></Setter>
@@ -64,21 +64,21 @@
 
         </Button>
 
-        <ProgressBar Grid.Column="1" x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="207,230,0,0" VerticalAlignment="Top" Width="260">
+        <ProgressBar Grid.Column="1" x:Name="BarProgress" HorizontalAlignment="Left" Height="10" Margin="183,229,0,0" VerticalAlignment="Top" Width="260">
             <ProgressBar.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </ProgressBar.Resources>
         </ProgressBar>
-        <TextBox Grid.Column="1" TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="207,113,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="259" Height="112" IsReadOnly="True">
+        <TextBox Grid.Column="1" TextAlignment="Center" Name="ResultBox" HorizontalAlignment="Left" Margin="183,112,0,0" TextWrapping="Wrap" Text="" FontSize="80"  VerticalAlignment="Top" Width="259" Height="112" IsReadOnly="True">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Grid.Column="1" Content="Amount of eligible combinations:" FontSize="15" VerticalContentAlignment="Top"  FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="207,82,0,0" VerticalAlignment="Top" Width="246"/>
+        <Label Grid.Column="1" Content="Amount of eligible combinations:" FontSize="15" VerticalContentAlignment="Top"  FontFamily="Comic Sans MS" HorizontalAlignment="Left" Margin="183,81,0,0" VerticalAlignment="Top" Width="246"/>
         <Label Grid.Column="1" x:Name="LblFileSelect" FontSize="15" HorizontalContentAlignment="Left" Content="File:" HorizontalAlignment="Left" Margin="24,277,0,0" VerticalAlignment="Top" Width="86" Height="36"/>
         <TextBox Grid.Column="1" x:Name="FileSelectBox" TextAlignment="Center" HorizontalAlignment="Left" Margin="24,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Height="23" IsReadOnly="True">
             <TextBox.Resources>
