@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 using UniqueLengthAmountWords;
 
 namespace FindWordsButWithGUI
@@ -35,21 +36,36 @@ namespace FindWordsButWithGUI
         {
             InitializeComponent();
             ReadSearch.progress = Update;
+            ReadSearch.combinationFound += Combination;
 
         }
 
-        private void Update(int a, int b)
+        private async void Update(int a, int b)
         {
-            double value = (double)((double)((double)a / (double)b) * 100);
-            Application.Current.Dispatcher.Invoke(() =>
+            Thread.Sleep(10);
+            await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                BarProgress.Value = value;
+                BarProgress.Value = (double)((double)((double)a / (double)b) * 100);
+            });
+        }
+
+        private async void Combination(string str)
+        {
+
+            Thread.Sleep(10);
+
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                //OutputBox.Text += ("\n" + str);
+                ResultBox.Text = (++amount).ToString();
             });
         }
 
         bool running = false;
-        private void Button_Click(object sender, RoutedEventArgs e)
+        int amount = 0;
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            OutputBox.Text = "Validating FilePath...";
             if (running)
             {
                 MessageBox.Show("I am busy");
@@ -61,41 +77,45 @@ namespace FindWordsButWithGUI
                 return;
             }
 
-            int a, b;
+            OutputBox.Text += "\nValidating Input Numbers";
+
+            int wordsLength, wordNumber;
             try
             {
-                a = Convert.ToInt32(LetterAmount.Text);
-                b = Convert.ToInt32(WordAmount.Text);
+                wordsLength = Convert.ToInt32(LetterAmount.Text);
+                wordNumber = Convert.ToInt32(WordAmount.Text);
             } catch(Exception ex)
             {
                 MessageBox.Show("Invalid numbers.");
                 return;
             }
 
+            OutputBox.Text += "\nReading File...";
+
+            CalculateOutput.IsEnabled = false;
             running = true;
 
-            OutputBox.Text = String.Empty;
-            ReadSearch.Length = a;
-            ReadSearch.AmountOfWords = b;
+            ReadSearch.Length = wordsLength;
+            ReadSearch.AmountOfWords = wordNumber;
             ReadSearch.Clear();
             ReadSearch.ReadFile(filepath);
 
-            Thread t = new Thread(new ThreadStart(Search));
+            //Thread t = new Thread(new ThreadStart(Search));
 
-            t.Start();
+            //t.Name = "ReadSeachManager";
+            //t.Start();
+
+
+            OutputBox.Text += "\nFinding Combinations";
+            Search();
         }
 
 
-        private void Search()
+        private async void Search()
         {
             try
             {
-                ReadSearch.SearchClever();
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ReadSearch.result.ForEach(x => OutputBox.Text += "\n" + x);
-                    ResultBox.Text = ReadSearch.result.Count.ToString();
-                });
+                await Task.Run(ReadSearch.SearchClever);
             }
             catch (Exception ex)
             {
@@ -103,6 +123,15 @@ namespace FindWordsButWithGUI
             }
 
             running = false;
+            amount = 0;
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                BarProgress.Value = 0;
+                CalculateOutput.IsEnabled = true;
+                ResultBox.Text = ReadSearch.result.Distinct().ToList().Count.ToString();
+            });
+            
 
         }
         string filepath;
@@ -129,6 +158,15 @@ namespace FindWordsButWithGUI
             }
         }
 
+        private void btnDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                OutputBox.Text = string.Empty;
+                ReadSearch.result.ToList().Distinct().ToList().ForEach(x => OutputBox.Text += "\n" + x);
+            });
+        }
+
         private void Save(string path)
         {
             try
@@ -136,12 +174,13 @@ namespace FindWordsButWithGUI
 
                 TextWriter tw = new StreamWriter(path);
                     
-                foreach (String s in ReadSearch.result)
+                foreach (String s in ReadSearch.result.ToList().Distinct().ToList())
                 {
                     tw.WriteLine(s);
                 }
             
                 tw.Close();
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
