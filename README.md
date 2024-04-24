@@ -10,3 +10,5 @@ Word3
 and so on
 
 A test file is included (Dictionary.txt)
+
+Project is .NET 8 using WPF.
