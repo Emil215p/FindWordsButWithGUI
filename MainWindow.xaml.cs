@@ -1,23 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Serialization;
 using UniqueLengthAmountWords;
 
 namespace FindWordsButWithGUI
@@ -28,10 +15,6 @@ namespace FindWordsButWithGUI
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +25,7 @@ namespace FindWordsButWithGUI
 
         private async void Update(int a, int b)
         {
-            Thread.Sleep(10);
+            //Thread.Sleep(10); // Smoother progress bar.
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 BarProgress.Value = (double)((double)((double)a / (double)b) * 100);
@@ -52,7 +35,7 @@ namespace FindWordsButWithGUI
         private async void Combination(string str)
         {
 
-            Thread.Sleep(10);
+            //Thread.Sleep(10); // Smoother counting.
 
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
